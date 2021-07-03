@@ -10,43 +10,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage()
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: MyHomePage());
   }
 }
 
 // 시작 클래스가 실제로 표시하는 클래스. 카운터 앱 화면
-class MyHomePage extends StatefulWidget {
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage>{
-  var _text = 'Hello';
-
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hello World'),
+        title: Text('제목'),
       ),
-      body: Text(
-        _text,
-        style: TextStyle(fontSize: 40),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _text = 'World';
-          });
-        },
-        child: Icon(Icons.touch_app),
-      ),
+      body: Text('여기에 예제 작성'),
     );
   }
 }
