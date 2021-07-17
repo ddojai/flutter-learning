@@ -25,7 +25,12 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-            child: Image.asset('assets/sample.jpeg')
+            child: TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(), // 외곽선
+                labelText: '여기에 입력하세요',
+              ),
+            )
         )
     );
   }
