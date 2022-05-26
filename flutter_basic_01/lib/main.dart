@@ -31,19 +31,24 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   final String title;
+
   MyHomePage({required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          title,
+        appBar: AppBar(
+          title: Text(
+            title,
+          ),
         ),
-      ),
-      body: Center(
-        child: Text('Hello, Flutter'),
-      ),
+        body: Center(
+            child: Image.asset(
+              'images/flutter_logo.png',
+              width: 100,
+              height: 100,
+            )
+        )
     );
   }
 }
