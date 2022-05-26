@@ -43,15 +43,14 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         body: Center(
-            child: Text(
-              'Hello, Text Widget',
-              style: TextStyle(
-                fontSize: 25,
-                fontFamily: 'OpenSans',
-                fontWeight: FontWeight.w700, // 지우면 Regular, 남기면 Bold
-              ),
-            )
-        )
-    );
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('1. First String', style: TextStyle(fontSize: 25)),
+              Text('2. Second String', style: TextStyle(fontSize: 20)),
+              Text('3. Thire String', style: TextStyle(fontSize: 15)),
+            ],
+          ),
+        ));
   }
 }
