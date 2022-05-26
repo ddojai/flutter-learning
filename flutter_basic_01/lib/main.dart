@@ -43,10 +43,13 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         body: Center(
-            child: Image.asset(
-              'images/flutter_logo.png',
-              width: 100,
-              height: 100,
+            child: Text(
+              'Hello, Text Widget',
+              style: TextStyle(
+                fontSize: 25,
+                fontFamily: 'OpenSans',
+                fontWeight: FontWeight.w700, // 지우면 Regular, 남기면 Bold
+              ),
             )
         )
     );
