@@ -43,12 +43,12 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text('1. First String', style: TextStyle(fontSize: 25)),
-              Text('2. Second String', style: TextStyle(fontSize: 20)),
-              Text('3. Thire String', style: TextStyle(fontSize: 15)),
+              Text('1. First', style: TextStyle(fontSize: 25)),
+              Text('2. Second', style: TextStyle(fontSize: 20)),
+              Text('3. Thire', style: TextStyle(fontSize: 15)),
             ],
           ),
         ));
