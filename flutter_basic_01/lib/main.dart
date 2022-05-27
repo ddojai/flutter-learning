@@ -31,24 +31,31 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   final String title;
+
   MyHomePage({required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            title,
-          ),
+      appBar: AppBar(
+        title: Text(
+          title,
         ),
-        body: Center(
-          child: ListView.builder(
-            itemCount: 50,
-            itemBuilder: (BuildContext context, int index) {
-              return Text('$index' + ' Text', style: TextStyle(fontSize: 25));
-            },
-          ),
-        ),
+      ),
+      body: Center(
+          child: Stack(
+        children: [
+          Image.asset('images/flutter_logo.png'),
+          Positioned(
+              left: 0,
+              bottom: 0,
+              child: Image.network(
+                'https://upload.wikimedia.org/wikipedia/commons/7/7e/Dart-logo.png',
+                height: 100,
+                width: 100,
+              ))
+        ],
+      )),
     );
   }
 }
