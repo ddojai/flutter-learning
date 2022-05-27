@@ -31,7 +31,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   final String title;
-
   MyHomePage({required this.title});
 
   @override
@@ -43,14 +42,13 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         body: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text('1. First', style: TextStyle(fontSize: 25)),
-              Text('2. Second', style: TextStyle(fontSize: 20)),
-              Text('3. Thire', style: TextStyle(fontSize: 15)),
-            ],
+          child: ListView.builder(
+            itemCount: 50,
+            itemBuilder: (BuildContext context, int index) {
+              return Text('$index' + ' Text', style: TextStyle(fontSize: 25));
+            },
           ),
-        ));
+        ),
+    );
   }
 }
