@@ -15,7 +15,9 @@ class FirstScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (BuildContext context) => SecondScreen(),
+                      builder: (BuildContext context) => SecondScreen(
+                        screenData: 'Data from FirstScreen',
+                      ),
                     ),
                   );
                 },
