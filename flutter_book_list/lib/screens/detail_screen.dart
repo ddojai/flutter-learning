@@ -19,6 +19,7 @@ class DetailScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
+                width: MediaQuery.of(context).size.width * 0.8,
                 padding: EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,6 +41,7 @@ class DetailScreen extends StatelessWidget {
                 ),
               ),
               Container(
+                width: MediaQuery.of(context).size.width * 0.15,
                 padding: EdgeInsets.all(10),
                 child: Center(
                   child: Icon(
