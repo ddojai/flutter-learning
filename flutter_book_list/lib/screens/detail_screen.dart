@@ -51,6 +51,54 @@ class DetailScreen extends StatelessWidget {
                 ),
               )
             ],
+          ),
+          Padding(
+            padding: EdgeInsets.all(3),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
+                children: [
+                  Icon(
+                    Icons.call,
+                    color: Colors.blue,
+                  ),
+                  Text(
+                    'Contact',
+                    style: TextStyle(color: Colors.blue),
+                  )
+                ],
+              ),
+              Column(
+                children: [
+                  Icon(
+                    Icons.near_me,
+                    color: Colors.blue,
+                  ),
+                  Text(
+                    'Route',
+                    style: TextStyle(color: Colors.blue),
+                  )
+                ],
+              ),
+              Column(
+                children: [
+                  Icon(
+                    Icons.save,
+                    color: Colors.blue,
+                  ),
+                  Text(
+                    'Save',
+                    style: TextStyle(color: Colors.blue),
+                  )
+                ],
+              ),
+            ],
+          ),
+          Container(
+            padding: EdgeInsets.all(15),
+            child: Text('머신러닝과 강화학습의 기본 개념부터 심층 강화학습의 알고리즘과 발전방향까지! 본 서는 강화학습의 기본 요소와 작동 원리에 대해 상세히 다루는데, 딥러닝 프레임 워크를 사용하는 것이 아닌, R base code로 강화학습을 구현하여 강화학습 작동원리를 이해한다.'),
           )
         ],
       ),
