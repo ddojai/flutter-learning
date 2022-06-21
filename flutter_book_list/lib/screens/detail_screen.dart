@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
 
 class DetailScreen extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final String description;
+  final String image;
+
+  DetailScreen({
+    required this.title,
+    required this.subtitle,
+    required this.description,
+    required this.image,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('패키지 없이 R로 구현하는 심층 강화학습'),
+        title: Text(title),
       ),
       body: Column(
         children: [
-          Image.network(
-              'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FCuoqW%2Fbtq8uatukHu%2FO0VapTwcTTpV3T29lqMYd0%2Fimg.png'),
+          Image.network(image),
           Padding(
             padding: EdgeInsets.all(3),
           ),
@@ -26,7 +37,7 @@ class DetailScreen extends StatelessWidget {
                   children: [
                     Container(
                       child: Text(
-                        '패키지 없이 R로 구현하는 심층 강화학습',
+                        title,
                         style: TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.bold,
@@ -34,7 +45,7 @@ class DetailScreen extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '손으로 풀어보는 Q-Learning부터 R로 구현하는 심층 강화학습까지',
+                      subtitle,
                       style: TextStyle(fontSize: 18, color: Colors.grey),
                     ),
                   ],
@@ -98,7 +109,7 @@ class DetailScreen extends StatelessWidget {
           ),
           Container(
             padding: EdgeInsets.all(15),
-            child: Text('머신러닝과 강화학습의 기본 개념부터 심층 강화학습의 알고리즘과 발전방향까지! 본 서는 강화학습의 기본 요소와 작동 원리에 대해 상세히 다루는데, 딥러닝 프레임 워크를 사용하는 것이 아닌, R base code로 강화학습을 구현하여 강화학습 작동원리를 이해한다.'),
+            child: Text(description),
           )
         ],
       ),
