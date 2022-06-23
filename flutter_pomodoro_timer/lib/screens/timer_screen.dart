@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:sprintf/sprintf.dart';
+
+import '../tools/util.dart';
 
 enum TimerStatus { running, paused, stopped, resting }
 
@@ -25,10 +26,6 @@ class _TimerScreenState extends State<TimerScreen> {
     print(_timerStatus.toString());
     _timer = WORK_SECONDS;
     _pomodoroCount = 0;
-  }
-
-  String secondsToString(int seconds) {
-    return sprintf("%02d:%02d", [seconds ~/ 60, seconds % 60]);
   }
 
   void run() {
@@ -77,7 +74,7 @@ class _TimerScreenState extends State<TimerScreen> {
           break;
         case TimerStatus.running:
           if (_timer <= 0) {
-            print("작업 완료!");
+            showToast("작업 완료!");
             rest();
           } else {
             setState(() {
@@ -90,7 +87,7 @@ class _TimerScreenState extends State<TimerScreen> {
             setState(() {
               _pomodoroCount += 1;
             });
-            print("오늘 $_pomodoroCount개의 뽀모도로를 달성했습니다.");
+            showToast("오늘 $_pomodoroCount개의 뽀모도로를 달성했습니다.");
             t.cancel();
             stop();
           } else {
@@ -136,7 +133,7 @@ class _TimerScreenState extends State<TimerScreen> {
         ),
         style: ElevatedButton.styleFrom(
           primary:
-              _timerStatus == TimerStatus.resting ? Colors.green : Colors.blue,
+          _timerStatus == TimerStatus.resting ? Colors.green : Colors.blue,
         ),
         onPressed: run,
       )
@@ -145,14 +142,20 @@ class _TimerScreenState extends State<TimerScreen> {
       appBar: AppBar(
         title: Text('뽀모도로 타이머'),
         backgroundColor:
-            _timerStatus == TimerStatus.resting ? Colors.green : Colors.blue,
+        _timerStatus == TimerStatus.resting ? Colors.green : Colors.blue,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.5,
-            width: MediaQuery.of(context).size.width * 0.6,
+            height: MediaQuery
+                .of(context)
+                .size
+                .height * 0.5,
+            width: MediaQuery
+                .of(context)
+                .size
+                .width * 0.6,
             child: Center(
               child: Text(
                 secondsToString(_timer),
@@ -165,7 +168,8 @@ class _TimerScreenState extends State<TimerScreen> {
             ),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: _timerStatus == TimerStatus.resting ? Colors.green : Colors.blue,
+              color: _timerStatus == TimerStatus.resting ? Colors.green : Colors
+                  .blue,
             ),
           ),
           Row(
@@ -173,8 +177,8 @@ class _TimerScreenState extends State<TimerScreen> {
             children: _timerStatus == TimerStatus.resting
                 ? const []
                 : _timerStatus == TimerStatus.stopped
-                    ? _stoppedButtons
-                    : _runningButtons,
+                ? _stoppedButtons
+                : _runningButtons,
           )
         ],
       ),
