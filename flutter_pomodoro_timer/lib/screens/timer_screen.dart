@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:sprintf/sprintf.dart';
 
 enum TimerStatus { running, paused, stopped, resting }
 
@@ -15,6 +17,19 @@ class _TimerScreenState extends State<TimerScreen> {
   late TimerStatus _timerStatus;
   late int _timer;
   late int _pomodoroCount;
+
+  @override
+  void initState() {
+    super.initState();
+    _timerStatus = TimerStatus.stopped;
+    print(_timerStatus.toString());
+    _timer = WORK_SECONDS;
+    _pomodoroCount = 0;
+  }
+
+  String secondsToString(int seconds) {
+    return sprintf("%02d:%02d", [seconds ~/ 60, seconds % 60]);
+  }
 
   void run() {
     setState(() {
@@ -91,52 +106,46 @@ class _TimerScreenState extends State<TimerScreen> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    _timerStatus = TimerStatus.stopped;
-    print(_timerStatus.toString());
-    _timer = WORK_SECONDS;
-    _pomodoroCount = 0;
-  }
-
-  @override
   Widget build(BuildContext context) {
     final List<Widget> _runningButtons = [
       ElevatedButton(
-        onPressed: () {},
         child: Text(
-          1 == 2 ? '계속하기' : '일시정지',
+          _timerStatus == TimerStatus.paused ? '계속하기' : '일시정지',
           style: TextStyle(color: Colors.white, fontSize: 16),
         ),
         style: ElevatedButton.styleFrom(primary: Colors.blue),
+        onPressed: _timerStatus == TimerStatus.paused ? resume : pause,
       ),
       Padding(
         padding: EdgeInsets.all(20),
       ),
       ElevatedButton(
-        onPressed: () {},
         child: Text(
           '포기하기',
           style: TextStyle(fontSize: 16),
         ),
         style: ElevatedButton.styleFrom(primary: Colors.grey),
+        onPressed: stop,
       ),
     ];
     final List<Widget> _stoppedButtons = [
       ElevatedButton(
-        onPressed: () {},
         child: Text(
           '시작하기',
           style: TextStyle(color: Colors.white, fontSize: 16),
         ),
         style: ElevatedButton.styleFrom(
-          primary: 1 == 2 ? Colors.green : Colors.blue,
+          primary:
+              _timerStatus == TimerStatus.resting ? Colors.green : Colors.blue,
         ),
+        onPressed: run,
       )
     ];
     return Scaffold(
       appBar: AppBar(
         title: Text('뽀모도로 타이머'),
+        backgroundColor:
+            _timerStatus == TimerStatus.resting ? Colors.green : Colors.blue,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -146,7 +155,7 @@ class _TimerScreenState extends State<TimerScreen> {
             width: MediaQuery.of(context).size.width * 0.6,
             child: Center(
               child: Text(
-                '00:00',
+                secondsToString(_timer),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 48,
@@ -156,14 +165,14 @@ class _TimerScreenState extends State<TimerScreen> {
             ),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: 1 == 2 ? Colors.green : Colors.blue,
+              color: _timerStatus == TimerStatus.resting ? Colors.green : Colors.blue,
             ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: 1 == 2
+            children: _timerStatus == TimerStatus.resting
                 ? const []
-                : 1 == 2
+                : _timerStatus == TimerStatus.stopped
                     ? _stoppedButtons
                     : _runningButtons,
           )
