@@ -1,10 +1,7 @@
-import 'dart:async';
+import 'dart:js';
 
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import 'list_screen.dart';
-import 'login_screen.dart';
+import 'dart:async';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -12,13 +9,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  Future<bool> checkLogin() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool isLogin = prefs.getBool('isLogin') ?? false;
-    print("[*] isLogin : " + isLogin.toString());
-    return isLogin;
-  }
-
   void moveScreen() async {
     await checkLogin().then((isLogin) {
       if (isLogin) {
